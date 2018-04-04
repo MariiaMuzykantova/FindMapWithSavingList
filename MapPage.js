@@ -16,7 +16,7 @@ export default class MapPage extends React.Component {
     super(props);
     const { params } = this.props.navigation.state;
     this.state = { 
-      address: params.maps, 
+      address: props.navigation.state.params.maps, 
       region: {
         latitude: 60.200692,
         longitude: 24.934302,
@@ -25,7 +25,7 @@ export default class MapPage extends React.Component {
       } };
   }
 
-  showLocation = (id) => {
+  componentDidMount = () => {
 
     const url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + this.state.address + '&key=AIzaSyBxKK48nvrjoyS08u8HnGAiRZxHIy1yb0c'
     fetch(url)
@@ -62,7 +62,6 @@ export default class MapPage extends React.Component {
             }}
           />
         </MapView>
-        <Button buttonStyle={{paddingLeft: 140, paddingRight: 140}} title="SHOW" onPress={this.showLocation} />
         </View>
         )
         }

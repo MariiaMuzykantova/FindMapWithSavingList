@@ -15,8 +15,9 @@ export default class App extends React.Component {
 }
 
 const MyApp = StackNavigator({
+  Places: {screen: MyAddressList},
   Map: {screen: MapPage},
-  Places: {screen: MyAddressList}
+  
 });
 
 const styles = StyleSheet.create({

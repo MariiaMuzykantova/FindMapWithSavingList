@@ -15,7 +15,7 @@ export default class MyAddressList extends React.Component {
 
     constructor(props) {
       super(props);
-      this.state = { title: '', addressList: [] };
+      this.state = { address: '', addressList: [] };
     }
   
 
@@ -55,13 +55,14 @@ export default class MyAddressList extends React.Component {
     }
 
     renderListProducts = () => {
+      const { navigate } = this.props.navigation;
       const addressList2 = this.state.addressList.map((value, index) => { 
          return ( 
          <ListItem
            title={value.address}
            key={index}
            rightTitle="show on map" 
-           onPressRightIcon={() => navigate('Map', {maps: value.id})}
+           onPressRightIcon={() => navigate('Map', {maps: value.address})}
            onLongPress={() => this.deleteItem(value.id)}
          />
        )
@@ -70,8 +71,6 @@ export default class MyAddressList extends React.Component {
      }
 
   render() {
-    const { navigate } = this.props.navigation;
-
     return (
       <View style={styles.container}>
         <FormLabel>Placefinder</FormLabel>
